@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <canvas id="myChart"></canvas>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script>
+        $.getJSON(
+            'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json',
+            function (result) {
+                var labels = result.map(function (e) {
+                        return e.data;
+                    }),
+                    source1 = result.map(function (e) {
+                        return e.ricoverati_con_sintomi;
+                    }),
+                    source2 = result.map(function (e) {
+                        return e.terapia_intensiva;
+                    }),
+                    source3 = result.map(function (e) {
+                        return e.totale_ospedalizzati;
+                    });
+                    source4 = result.map(function (e) {
+                        return e.totale_attualmente_positivi;
+                    });
+                    source5 = result.map(function (e) {
+                        return e.isolamento_domiciliare;
+                    });
+                    source6 = result.map(function (e) {
+                        return e.nuovi_attualmente_positivi;
+                    });
+                    source7 = result.map(function (e) {
+                        return e.dimessi_guariti;
+                    });
+                    source8 = result.map(function (e) {
+                        return e.deceduti;
+                    });
+                    source9 = result.map(function (e) {
+                        return e.totale_casi;
+                    });
+                    source10 = result.map(function (e) {
+                        return e.tamponi;
+                    });
+
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: "Hospitalized with sympthoms",
+                            data: source1,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(6, 167, 125, 0.1)",
+                            borderColor: "rgba(6, 167, 125, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(6, 167, 125, 1)",
+                            pointHoverBackgroundColor: "rgba(6, 167, 125, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "High Dependency Unit",
+                            data: source2,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(246, 71, 64, 0.1)",
+                            borderColor: "rgba(246, 71, 64, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(246, 71, 64, 1)",
+                            pointHoverBackgroundColor: "rgba(246, 71, 64, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "Total Hospilized",
+                            data: source3,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "Total Actually Positive",
+                            data: source4,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "Home Isoled",
+                            data: source5,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "totale_ospedalizzati",
+                            data: source6,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "New Positive",
+                            data: source7,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "Death",
+                            data: source8,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "Total Cases",
+                            data: source9,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }, {
+                            label: "Tests",
+                            data: source10,
+                            borderWidth: 2,
+                            backgroundColor: "rgba(26, 143, 227, 0.1)",
+                            borderColor: "rgba(26, 143, 227, 1)",
+                            pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                            pointBorderColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
+                            pointHoverBorderColor: "#fff"
+                        }]
+                    }
+                });
+            });
+    </script>
+</body>
+
+</html>
