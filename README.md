@@ -21,6 +21,19 @@ The National trends shows the trend line of the following data:
 - Total Cases
 - Tests
 
+## Regional Trends
+The Regional trends shows the trend line for each region that can be choose of the following data:
+
+- Hospitalized with sympthoms
+- High Dependency Unit Patients
+- Total Hospitalized
+- Total Actually Positive
+- Home Isoled
+- New Positive
+- Recovered
+- Death
+- Total Cases
+- Tests
 
 ## References
 

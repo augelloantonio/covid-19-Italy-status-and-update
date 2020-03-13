@@ -14,31 +14,31 @@ function getTrendData() {
                 }),
                 source3 = result.map(function (e) {
                     return e.totale_ospedalizzati;
+                }),
+                source4 = result.map(function (e) {
+                    return e.totale_attualmente_positivi;
+                }),
+                source5 = result.map(function (e) {
+                    return e.isolamento_domiciliare;
+                }),
+                source6 = result.map(function (e) {
+                    return e.nuovi_attualmente_positivi;
+                }),
+                source7 = result.map(function (e) {
+                    return e.dimessi_guariti;
+                }),
+                source8 = result.map(function (e) {
+                    return e.deceduti;
+                }),
+                source9 = result.map(function (e) {
+                    return e.totale_casi;
+                }),
+                source10 = result.map(function (e) {
+                    return e.tamponi;
                 });
-            source4 = result.map(function (e) {
-                return e.totale_attualmente_positivi;
-            });
-            source5 = result.map(function (e) {
-                return e.isolamento_domiciliare;
-            });
-            source6 = result.map(function (e) {
-                return e.nuovi_attualmente_positivi;
-            });
-            source7 = result.map(function (e) {
-                return e.dimessi_guariti;
-            });
-            source8 = result.map(function (e) {
-                return e.deceduti;
-            });
-            source9 = result.map(function (e) {
-                return e.totale_casi;
-            });
-            source10 = result.map(function (e) {
-                return e.tamponi;
-            });
 
             var ctx = document.getElementById("trends_chart").getContext("2d");
-            var trends_chart = new Chart(ctx, {
+            var trends_chart = new trends_chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
@@ -53,7 +53,7 @@ function getTrendData() {
                         pointHoverBackgroundColor: "rgba(6, 167, 125, 1)",
                         pointHoverBorderColor: "#fff"
                     }, {
-                        label: "High Dependency Unit",
+                        label: "Intensive Care Unit",
                         data: source2,
                         borderWidth: 2,
                         backgroundColor: "rgba(246, 71, 64, 0.1)",
@@ -172,17 +172,14 @@ function getRegionData() {
 
                     console.log(grouped[region].) */
 
-            console.log(result)
-
             var labels = result.map(function (e) {
                     if (e.denominazione_regione == region) {
-                        console.log(e)
+                        console.log(e.data)
                         return e.data;
                     }
                 }),
                 source1 = result.map(function (e) {
                     if (e.denominazione_regione == region) {
-
                         return e.ricoverati_con_sintomi;
                     }
                 }),
@@ -195,42 +192,42 @@ function getRegionData() {
                     if (e.denominazione_regione == region) {
                         return e.totale_ospedalizzati;
                     }
+                }),
+                source4 = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        return e.totale_attualmente_positivi;
+                    }
+                }),
+                source5 = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        return e.isolamento_domiciliare;
+                    }
+                }),
+                source6 = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        return e.nuovi_attualmente_positivi;
+                    }
+                }),
+                source7 = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        return e.dimessi_guariti;
+                    }
+                }),
+                source8 = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        return e.deceduti;
+                    }
+                }),
+                source9 = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        return e.totale_casi;
+                    }
+                }),
+                source10 = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        return e.tamponi;
+                    }
                 });
-            source4 = result.map(function (e) {
-                if (e.denominazione_regione == region) {
-                    return e.totale_attualmente_positivi;
-                }
-            });
-            source5 = result.map(function (e) {
-                if (e.denominazione_regione == region) {
-                    return e.isolamento_domiciliare;
-                }
-            });
-            source6 = result.map(function (e) {
-                if (e.denominazione_regione == region) {
-                    return e.nuovi_attualmente_positivi;
-                }
-            });
-            source7 = result.map(function (e) {
-                if (e.denominazione_regione == region) {
-                    return e.dimessi_guariti;
-                }
-            });
-            source8 = result.map(function (e) {
-                if (e.denominazione_regione == region) {
-                    return e.deceduti;
-                }
-            });
-            source9 = result.map(function (e) {
-                if (e.denominazione_regione == region) {
-                    return e.totale_casi;
-                }
-            });
-            source10 = result.map(function (e) {
-                if (e.denominazione_regione == region) {
-                    return e.tamponi;
-                }
-            });
 
 
             var ctx2 = document.getElementById("regions_chart").getContext("2d");
@@ -249,7 +246,7 @@ function getRegionData() {
                         pointHoverBackgroundColor: "rgba(6, 167, 125, 1)",
                         pointHoverBorderColor: "#fff"
                     }, {
-                        label: "High Dependency Unit",
+                        label: "Intensive Care Unit",
                         data: source2,
                         borderWidth: 2,
                         backgroundColor: "rgba(246, 71, 64, 0.1)",
