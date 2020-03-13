@@ -38,5 +38,7 @@ The Regional trends shows the trend line for each region that can be choose of t
 
 ## References
 
-Link for the dataset Repository by Umberto Rosini:
+All data are taken from "Presidenza del Consiglio dei Ministri - Dipartimento della Protezione Civile", Official Government Department.
+
+Dataset Repository by Umberto Rosini:
 https://github.com/pcm-dpc/COVID-19/tree/master/dati-json
