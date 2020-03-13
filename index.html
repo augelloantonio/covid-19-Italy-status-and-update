@@ -34,12 +34,12 @@
                 <a class="list-group-item list-group-item-action bg-dark"><span class="nav-label"></span> <span
                         class="expand-collapse" id="menu"> <i id="menu-bar"
                             class="fas fa-angle-right navbar-icon"></i></span></a>
-                <li class="list-group-item list-group-item-action bg-dark " style="cursor: pointer;"
+                <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_trend_chart();"><i class="fas fa-chart-line hovered-li"></i><span
-                        class="nav-label">National Trends</span></li>
+                        class="nav-label ml-2">National Trends</span></li>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_region_chart();"><i class="fas fa-chart-line far hovered-li"></i><span
-                        class="nav-label">Regional Trends</span>
+                        class="nav-label ml-2">Counties Trends</span>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_info_section();"><i class="fa fa-clipboard navbar-icon navbar-icon"></i><span
                         class="nav-label">Info</span></li>
@@ -73,7 +73,8 @@
             <!-- Analysis for Region Chart-->
             <div class="container-fluid" id="regions_trend" style="display:none;">
                 <div>
-                    <h4>Please Select a Region</h4>
+                    <h2>Trends of Italian Counties </h2>
+                    <h4>Please Select a County</h4>
                     <form>
                         <select id="region_selection">
                             <option value="Abruzzo" selected="selected">Abruzzo</option>
@@ -113,15 +114,18 @@
             <!-- Info Section-->
             <div id="info_section" style="display: none;">
                 <div class="container">
-                    <div class="section">
+                    <div class="section p-3">
                         <h2>Covid-19 - Italian Data Visualization</h2>
                         <div class="article">
-                            <p>This simple frontend Data Visualization dashboard will show the trends of the
+                            <p>This simple frontend Data Visualization dashboard shows the trend of the
                                 data
                                 found
                                 on the dataset Repository by Umberto Rosini, link of same:
                                 <a
                                     href="https://github.com/pcm-dpc/COVID-19/tree/master/dati-json">https://github.com/pcm-dpc/COVID-19/tree/master/dati-json</a>.
+                            </p>
+                            <p>The repository can be found on GitHub at the following link - <a
+                                    href="https://github.com/gello94/covid-19-Italy-status-and-update">https://github.com/gello94/covid-19-Italy-status-and-update</a>.
                             </p>
                         </div>
                     </div>

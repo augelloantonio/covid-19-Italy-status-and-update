@@ -1,9 +1,10 @@
 # COVID-19 - Italian Data Visualization Dashboard
 
-This simple frontend Data Visualization dashboard will show the trends of the data found on different channel (linked in the reference section).
+This simple frontend Data Visualization dashboard shows the trends of the data found on different channel (linked in the reference section).
 
 Watch the dashboard at the following link - https://gello94.github.io/covid-19-Italy-status-and-update/
 
+The data are updated every day between 17:00 and 18:00 hour.
 
 There are two section under construction:
 
