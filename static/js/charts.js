@@ -38,7 +38,7 @@ function getTrendData() {
                 });
 
             var ctx = document.getElementById("trends_chart").getContext("2d");
-            var trends_chart = new trends_chart(ctx, {
+            var trends_chart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
