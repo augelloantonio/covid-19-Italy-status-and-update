@@ -2,6 +2,9 @@
 
 This simple frontend Data Visualization dashboard will show the trends of the data found on different channel (linked in the reference section).
 
+Watch the dashboard at the following link - https://gello94.github.io/covid-19-Italy-status-and-update/
+
+
 There are two section under construction:
 
 ## National Trends
@@ -17,9 +20,6 @@ The National trends shows the trend line of the following data:
 - Death
 - Total Cases
 - Tests
-
-
-Watch the dashboard at the following link - https://gello94.github.io/covid-19-Italy-status-and-update/
 
 
 ## References
