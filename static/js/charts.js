@@ -173,8 +173,11 @@ function getRegionData() {
                     console.log(grouped[region].) */
 
             var labels = result.map(function (e) {
+                    if (e.denominazione_regione == region) {
+                        date = e.data
                         console.log(e.data)
-                        return e.data;
+                    }
+                    return date
                 }),
                 source1 = result.map(function (e) {
                     if (e.denominazione_regione == region) {
@@ -335,13 +338,16 @@ function getRegionData() {
                         pointHoverBorderColor: "#fff"
                     }]
                 },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
+                option: {
+                    xAxes: [{
+                        type: 'time',
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 20
+                        }
+                    }]
                 }
+
             });
 
         });
