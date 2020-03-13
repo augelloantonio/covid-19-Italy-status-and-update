@@ -173,10 +173,8 @@ function getRegionData() {
                     console.log(grouped[region].) */
 
             var labels = result.map(function (e) {
-                    if (e.denominazione_regione == region) {
                         console.log(e.data)
                         return e.data;
-                    }
                 }),
                 source1 = result.map(function (e) {
                     if (e.denominazione_regione == region) {
@@ -336,10 +334,35 @@ function getRegionData() {
                         pointHoverBackgroundColor: "rgba(163, 166, 22, 0.8)",
                         pointHoverBorderColor: "#fff"
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
                 }
             });
+
         });
 }
 
 getTrendData();
 getRegionData();
+
+// Auto refresh the json to check if there are new data
+var previous = null;
+var current = null;
+
+setInterval(function () {
+    $.getJSON('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json', function (json) {
+        current = JSON.stringify(json);
+        if (previous && current && previous !== current) {
+            console.log('refresh');
+            location.reload();
+        }
+        previous = current;
+    });
+}, 2000);
+
+setInterval(getTrendData());

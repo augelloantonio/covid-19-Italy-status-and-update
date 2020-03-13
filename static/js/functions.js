@@ -6,7 +6,7 @@
 function show_trend_chart() {
     $("#trends").show();
     $("#regions_trend").hide();
-    $('#info-section').hide()
+    $('#info_section').hide()
 }
 
 function show_region_chart() {
@@ -19,7 +19,6 @@ function show_info_section() {
     $("#trends").hide();
     $("#regions_trend").hide();
     $('#info_section').show();
-    console.log('show')
 }
 
 
