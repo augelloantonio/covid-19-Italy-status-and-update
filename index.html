@@ -35,22 +35,13 @@
                     <a class="list-group-item list-group-item-action bg-dark"><span class="nav-label"></span> <span
                             class="expand-collapse" id="menu"> <i id="menu-bar"
                                 class="fas fa-angle-right navbar-icon"></i></span></a>
-                    <a href="{% url 'dashboard'%}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="fas fa-chart-line navbar-icon"></i><span class="nav-label">Dashboard</span></a>
-                    <a href="{%url 'dashboard_orders'%}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="far fa-clipboard navbar-icon"></i><span class="nav-label">Orders</span></a>
-                    <a href="{% url 'dashboard_product' %}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="far fa-list-alt navbar-icon"></i><span class="nav-label">Products</span></a>
-                    <a href="{% url 'users' %}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="fas fa-users navbar-icon"></i><span class="nav-label">Users</span></a>
-                    <a href="{% url 'add_a_product' %}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="far fa-plus-square navbar-icon"></i><span class="nav-label">Add a Product</span></a>
-                    <a href="{% url 'add_a_category' %}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="fas fa-plus-circle navbar-icon"></i><span class="nav-label">Add a Category</span></a>
-                    <a href="{% url 'voucher_view' %}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="fas fa-tags navbar-icon"></i><span class="nav-label">Voucher</span></a>
-                    <a href="{% url 'add_new_voucher' %}" class="list-group-item list-group-item-action bg-dark"><i
-                            class="fas fa-plus-circle navbar-icon"></i><span class="nav-label">Add a Voucher</span></a>
+                    <li class="list-group-item list-group-item-action bg-dark"><i
+                            class="fas fa-chart-line navbar-icon"></i><span class="nav-label">Info</span></li>
+                    <li class="list-group-item list-group-item-action bg-dark" onclick="show_trend_chart();"><i
+                            class="far fa-clipboard navbar-icon"></i><span class="nav-label">Trends</span></li>
+                    <li class="list-group-item list-group-item-action bg-dark" onclick="show_region_chart();"><i
+                            class="far fa-clipboard navbar-icon"></i><span class="nav-label">Regions Analysis</span>
+                    </li>
                 </div>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -68,35 +59,58 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="container-fluid">
-                    <canvas id="myChart" class="w-100"></canvas>
+
+                <!--Charts-->
+
+                <!-- Trend Chart-->
+                <div class="container-fluid" id="trends">
+                    <canvas id="trends_chart" class="w-100"></canvas>
                 </div>
+                <!-- ./Trend Chart-->
+
+                <!-- Analysis for Region Chart-->
+                <div class="container-fluid" id="regions_trend" style="display:none;">
+                    <div>
+                        <h4>Please Select a Region</h4>
+                        <form>
+                            <select id="region_selection">
+                                <option value="Abruzzo" selected="selected">Abruzzo</option>
+                                <option value="Basilicata">Basilicata</option>
+                                <option value="Calabria">Calabria</option>
+                                <option value="Campania">Campania</option>
+                                <option value="Emilia-Romagna">Emilia-Romagna</option>
+                                <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
+                                <option value="Lazio">Lazio</option>
+                                <option value="Liguria">Liguria</option>
+                                <option value="Lombardia">Lombardia</option>
+                                <option value="Marche">Marche</option>
+                                <option value="Molise">Molise</option>
+                                <option value="Piemonte">Piemonte</option>
+                                <option value="Puglia">Puglia</option>
+                                <option value="Sardegna">Sardegna</option>
+                                <option value="Sicilia">Sicilia</option>
+                                <option value="Toscana">Toscana</option>
+                                <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                                <option value="Umbria">Umbria</option>
+                                <option value="Valle d'Aosta">Valle d'Aosta</option>
+                                <option value="Veneto">Veneto</option>
+                            </select>
+                            <input type="button" onclick="select_region(); getRegionData();" value="Show Data">
+
+                        </form>
+                    </div>
+
+                    <div id="selected_region"></div>
+                    <canvas id="regions_chart" class="w-100"></canvas>
+                </div>
+                <!-- ./Analysis for Region Chart-->
+
+                <!--./Charts-->
             </div>
             <!-- ./Page content-->
         </div>
         <!-- /#wrapper -->
 
-        <!-- Personal jQuery script-->
-        <script>
-            //collapse sidebar in dashboard
-            $(document).ready(function () {
-                $(".expand-collapse").click(function (e) {
-                    $("#sidebar-wrapper").toggleClass("collapsed");
-                });
-
-                // If screen size < 960px use sidebar collepsed
-                if ($(window).width() < 960) {
-                    $("#sidebar-wrapper").addClass("collapsed");
-                } else {
-                    $("#sidebar-wrapper").removeClass("collapsed");
-                    $('#menu-bar').toggleClass('fa-angle-right fa-angle-left');
-                }
-                $('#menu').click(function () {
-                    $('#menu-bar').toggleClass('fa-angle-right fa-angle-left');
-                })
-
-            });
-        </script>
 
         <!--Jquery-->
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -112,9 +126,12 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
         </script>
 
+        <script src="http://underscorejs.org/underscore-min.js"></script>
 
         <!--Personal Script-->
         <script src="static/js/charts.js"></script>
+        <script src="static/js/functions.js"></script>
+
 
     </body>
 
