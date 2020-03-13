@@ -21,118 +21,141 @@
 
     <link rel="stylesheet" href="static/css/main.css">
 
-    <title>COVID-19, Italy Assessment</title>
+    <title>Covid-19 - Italian Data Visualizationt</title>
 </head>
 
 <body>
 
-    <body>
-        <div class="d-flex" id="wrapper">
+    <div class="d-flex" id="wrapper">
 
-            <!-- Sidebar -->
-            <div class="bg-dark border-right navbar-primary" id="sidebar-wrapper">
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action bg-dark"><span class="nav-label"></span> <span
-                            class="expand-collapse" id="menu"> <i id="menu-bar"
-                                class="fas fa-angle-right navbar-icon"></i></span></a>
-                    <li class="list-group-item list-group-item-action bg-dark"><i
-                            class="fas fa-chart-line navbar-icon"></i><span class="nav-label">Info</span></li>
-                    <li class="list-group-item list-group-item-action bg-dark" onclick="show_trend_chart();"><i
-                            class="far fa-clipboard navbar-icon"></i><span class="nav-label">Trends</span></li>
-                    <li class="list-group-item list-group-item-action bg-dark" onclick="show_region_chart();"><i
-                            class="far fa-clipboard navbar-icon"></i><span class="nav-label">Regions Analysis</span>
-                    </li>
-                </div>
+        <!-- Sidebar -->
+        <div class="bg-dark border-right navbar-primary" id="sidebar-wrapper">
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-dark"><span class="nav-label"></span> <span
+                        class="expand-collapse" id="menu"> <i id="menu-bar"
+                            class="fas fa-angle-right navbar-icon"></i></span></a>
+                <li class="list-group-item list-group-item-action bg-dark " style="cursor: pointer;"
+                    onclick="show_trend_chart();"><i class="fas fa-chart-line hovered-li"></i><span
+                        class="nav-label">National Trends</span></li>
+                <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
+                    onclick="show_region_chart();"><i class="fas fa-chart-line far hovered-li"></i><span
+                        class="nav-label">Regional Trends</span>
+                <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
+                    onclick="show_info_section();"><i class="fa fa-clipboard navbar-icon navbar-icon"></i><span
+                        class="nav-label">Info</span></li>
+                </li>
             </div>
-            <!-- /#sidebar-wrapper -->
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-            <!-- Page Content -->
-            <div class="w-100">
-                <nav
-                    class="navbar navbar-expand-lg navbar-light bg-light border-bottom navbar-fixed-top dashboard-navbar bg-dark">
-                    <div class="navbar sidebar-navbar" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            <li class="nav-item active">
-                                <a class="nav-link home-icon" href=""><i
-                                        class="fas fa-home navbar-icon"></i> <span class="sr-only">(current)</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-
-                <!--Charts-->
-
-                <!-- Trend Chart-->
-                <div class="container-fluid" id="trends">
-                    <canvas id="trends_chart" class="w-100"></canvas>
+        <!-- Page Content -->
+        <div class="w-100">
+            <nav
+                class="navbar navbar-expand-lg navbar-light bg-light border-bottom navbar-fixed-top dashboard-navbar bg-dark">
+                <div class="navbar sidebar-navbar" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link home-icon" href=""><i class="fas fa-home navbar-icon"></i> <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
                 </div>
-                <!-- ./Trend Chart-->
+            </nav>
 
-                <!-- Analysis for Region Chart-->
-                <div class="container-fluid" id="regions_trend" style="display:none;">
-                    <div>
-                        <h4>Please Select a Region</h4>
-                        <form>
-                            <select id="region_selection">
-                                <option value="Abruzzo" selected="selected">Abruzzo</option>
-                                <option value="Basilicata">Basilicata</option>
-                                <option value="Calabria">Calabria</option>
-                                <option value="Campania">Campania</option>
-                                <option value="Emilia Romagna">Emilia Romagna</option>
-                                <option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
-                                <option value="Lazio">Lazio</option>
-                                <option value="Liguria">Liguria</option>
-                                <option value="Lombardia">Lombardia</option>
-                                <option value="Marche">Marche</option>
-                                <option value="Molise">Molise</option>
-                                <option value="Piemonte">Piemonte</option>
-                                <option value="Puglia">Puglia</option>
-                                <option value="Sardegna">Sardegna</option>
-                                <option value="Sicilia">Sicilia</option>
-                                <option value="Toscana">Toscana</option>
-                                <option value="Trentino Alto Adige">Trentino Alto Adige</option>
-                                <option value="Umbria">Umbria</option>
-                                <option value="Valle d'Aosta">Valle d'Aosta</option>
-                                <option value="Veneto">Veneto</option>
-                            </select>
-                            <input type="button" onclick="select_region(); getRegionData();" value="Show Data">
+            <!--Charts-->
 
-                        </form>
-                    </div>
+            <!-- Trend Chart-->
+            <div class="container-fluid" id="trends">
+                <canvas id="trends_chart" class="w-100"></canvas>
+            </div>
+            <!-- ./Trend Chart-->
 
-                    <div id="selected_region"></div>
+            <!-- Analysis for Region Chart-->
+            <div class="container-fluid" id="regions_trend" style="display:none;">
+                <div>
+                    <h4>Please Select a Region</h4>
+                    <form>
+                        <select id="region_selection">
+                            <option value="Abruzzo" selected="selected">Abruzzo</option>
+                            <option value="Basilicata">Basilicata</option>
+                            <option value="Calabria">Calabria</option>
+                            <option value="Campania">Campania</option>
+                            <option value="Emilia Romagna">Emilia Romagna</option>
+                            <option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
+                            <option value="Lazio">Lazio</option>
+                            <option value="Liguria">Liguria</option>
+                            <option value="Lombardia">Lombardia</option>
+                            <option value="Marche">Marche</option>
+                            <option value="Molise">Molise</option>
+                            <option value="Piemonte">Piemonte</option>
+                            <option value="Puglia">Puglia</option>
+                            <option value="Sardegna">Sardegna</option>
+                            <option value="Sicilia">Sicilia</option>
+                            <option value="Toscana">Toscana</option>
+                            <option value="Trentino Alto Adige">Trentino Alto Adige</option>
+                            <option value="Umbria">Umbria</option>
+                            <option value="Valle d'Aosta">Valle d'Aosta</option>
+                            <option value="Veneto">Veneto</option>
+                        </select>
+                        <input type="button" onclick="select_region(); getRegionData();" value="Show Data">
+
+                    </form>
+                </div>
+
+                <div id="selected_region">
                     <canvas id="regions_chart" class="w-100"></canvas>
                 </div>
-                <!-- ./Analysis for Region Chart-->
-
-                <!--./Charts-->
             </div>
-            <!-- ./Page content-->
+            <!-- ./Analysis for Region Chart-->
+
+            <!--./Charts-->
+
+            <!-- Info Section-->
+            <div id="info_section" style="display: none;">
+                <div class="container">
+                    <div class="section">
+                        <h2>Covid-19 - Italian Data Visualization</h2>
+                        <div class="article">
+                            <p>This simple frontend Data Visualization dashboard will show the trends of the
+                                data
+                                found
+                                on the dataset Repository by Umberto Rosini, link of same:
+                                <a
+                                    href="https://github.com/pcm-dpc/COVID-19/tree/master/dati-json">https://github.com/pcm-dpc/COVID-19/tree/master/dati-json</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./ Info Section-->
+
         </div>
-        <!-- /#wrapper -->
+        <!-- ./Page content-->
+    </div>
+    <!-- /#wrapper -->
 
 
-        <!--Jquery-->
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-        <!--ChartJs script-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <!--ChartJs script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
-        <!-- Bootstrap Script-->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
+    <!-- Bootstrap Script-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
-        <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
 
-        <!--Personal Script-->
-        <script src="static/js/charts.js"></script>
-        <script src="static/js/functions.js"></script>
+    <!--Personal Script-->
+    <script src="static/js/charts.js"></script>
+    <script src="static/js/functions.js"></script>
 
 
-    </body>
+</body>
 
 </html>
