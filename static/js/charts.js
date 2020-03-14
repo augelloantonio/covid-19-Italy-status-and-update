@@ -38,6 +38,8 @@ function getTrendData() {
                 });
 
             var ctx = document.getElementById("trends_chart").getContext("2d");
+            Chart.defaults.global.responsive = true;
+
             var trends_chart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -68,7 +70,7 @@ function getTrendData() {
                         borderWidth: 2,
                         backgroundColor: "rgba(26, 143, 227, 0.1)",
                         borderColor: "rgba(26, 143, 227, 1)",
-                        pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                        pointBackgroundColor: "rgba(26, 143, 227, 1)",
                         pointBorderColor: "rgba(26, 143, 227, 1)",
                         pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
                         pointHoverBorderColor: "#fff"
@@ -86,11 +88,11 @@ function getTrendData() {
                         label: "Home Isoled",
                         data: source5,
                         borderWidth: 2,
-                        backgroundColor: "rgba(283, 143, 242, 0.1)",
-                        borderColor: "rgba(285, 143, 227, 1)",
-                        pointBackgroundColor: "rgba(285, 225, 225, 1)",
-                        pointBorderColor: "rgba(285, 143, 227, 1)",
-                        pointHoverBackgroundColor: "rgba(285, 143, 227, 1)",
+                        backgroundColor: "rgba(219, 178, 137, 0.1)",
+                        borderColor: "rgba(123, 71, 19)",
+                        pointBackgroundColor: "rgba(178, 96, 15, 1)",
+                        pointBorderColor: "rgba(178, 96, 15, 1)",
+                        pointHoverBackgroundColor: "rgba(178, 96, 15, 1)",
                         pointHoverBorderColor: "#fff"
                     }, {
                         label: "New Positive",
@@ -143,6 +145,20 @@ function getTrendData() {
                         pointHoverBackgroundColor: "rgba(163, 166, 22, 0.8)",
                         pointHoverBorderColor: "#fff"
                     }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 10,
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                offsetGridLines: true,
+                                drawOnChartArea: true
+                            }
+                        }]
+                    }
                 }
             });
         });
@@ -175,6 +191,7 @@ function getRegionData() {
             var labels = result.map(function (e) {
                     if (e.denominazione_regione == region) {
                         date = e.data
+                        console.log(e.data.lenght)
                         console.log(e.data)
                     }
                     return date
@@ -245,7 +262,8 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(225, 225, 225, 1)",
                         pointBorderColor: "rgba(6, 167, 125, 1)",
                         pointHoverBackgroundColor: "rgba(6, 167, 125, 1)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Intensive Care Unit",
                         data: source2,
@@ -255,17 +273,19 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(225, 225, 225, 1)",
                         pointBorderColor: "rgba(246, 71, 64, 1)",
                         pointHoverBackgroundColor: "rgba(246, 71, 64, 1)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Total Hospitalized",
                         data: source3,
                         borderWidth: 2,
                         backgroundColor: "rgba(26, 143, 227, 0.1)",
                         borderColor: "rgba(26, 143, 227, 1)",
-                        pointBackgroundColor: "rgba(225, 225, 225, 1)",
+                        pointBackgroundColor: "rgba(26, 143, 227, 1)",
                         pointBorderColor: "rgba(26, 143, 227, 1)",
                         pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Total Actually Positive",
                         data: source4,
@@ -275,17 +295,19 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(225, 225, 225, 1)",
                         pointBorderColor: "rgba(276, 143, 227, 1)",
                         pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Home Isoled",
                         data: source5,
                         borderWidth: 2,
-                        backgroundColor: "rgba(283, 143, 242, 0.1)",
-                        borderColor: "rgba(285, 143, 227, 1)",
-                        pointBackgroundColor: "rgba(285, 225, 225, 1)",
-                        pointBorderColor: "rgba(285, 143, 227, 1)",
-                        pointHoverBackgroundColor: "rgba(285, 143, 227, 1)",
-                        pointHoverBorderColor: "#fff"
+                        backgroundColor: "rgba(219, 178, 137, 0.1)",
+                        borderColor: "rgba(123, 71, 19)",
+                        pointBackgroundColor: "rgba(178, 96, 15, 1)",
+                        pointBorderColor: "rgba(178, 96, 15, 1)",
+                        pointHoverBackgroundColor: "rgba(178, 96, 15, 1)",
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "New Positive",
                         data: source6,
@@ -295,7 +317,8 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(139, 135, 236)",
                         pointBorderColor: "rgba(139, 135, 236)",
                         pointHoverBackgroundColor: "rgba(139, 135, 236)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Recovered",
                         data: source7,
@@ -305,7 +328,8 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(74, 240, 252, 1)",
                         pointBorderColor: "rgba(74, 240, 252, 1)",
                         pointHoverBackgroundColor: "rgba(74, 240, 252, 1)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Death",
                         data: source8,
@@ -315,7 +339,8 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(13, 2, 11, 0.8)",
                         pointBorderColor: "rgba(13, 2, 11, 0.8)",
                         pointHoverBackgroundColor: "rgba(13, 2, 11, 0.8)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Total Cases",
                         data: source9,
@@ -325,7 +350,8 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(198, 54, 10, 0.8)",
                         pointBorderColor: "rgba(198, 54, 10, 0.8)",
                         pointHoverBackgroundColor: "rgba(198, 54, 10, 0.8)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }, {
                         label: "Tests",
                         data: source10,
@@ -335,19 +361,23 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(163, 166, 22, 0.8)",
                         pointBorderColor: "rgba(163, 166, 22, 0.8)",
                         pointHoverBackgroundColor: "rgba(163, 166, 22, 0.8)",
-                        pointHoverBorderColor: "#fff"
+                        pointHoverBorderColor: "#fff",
+                        spanGaps: true,
                     }]
                 },
-                option: {
-                    xAxes: [{
-                        type: 'time',
-                        ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 20
-                        }
-                    }]
+                options: {
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 10,
+                            },
+                            gridLines: {
+                                offsetGridLines: true,
+                                drawOnChartArea: true
+                            }
+                        }]
+                    }
                 }
-
             });
 
         });
