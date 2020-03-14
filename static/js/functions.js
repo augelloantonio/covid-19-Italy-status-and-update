@@ -41,3 +41,8 @@ $(document).ready(function () {
     })
 
 });
+
+// Show modal on page load
+$(window).on('load', function () {
+    $('#myModal').modal('show');
+});
