@@ -151,11 +151,6 @@ function getTrendData() {
                         xAxes: [{
                             ticks: {
                                 fontSize: 10,
-                                beginAtZero: true
-                            },
-                            gridLines: {
-                                offsetGridLines: true,
-                                drawOnChartArea: true
                             }
                         }]
                     }
