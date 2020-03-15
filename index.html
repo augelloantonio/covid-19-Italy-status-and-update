@@ -39,11 +39,14 @@
                         class="nav-label ml-2">National Trends</span></li>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_region_chart();"><i class="fas fa-chart-line far hovered-li"></i><span
-                        class="nav-label ml-2">Counties Trends</span>
+                        class="nav-label ml-2">Counties Trends</span></li>
+                <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
+                    onclick="show_europe_cases();"><i class="fas fa-chart-line far hovered-li"></i><span
+                        class="nav-label ml-2">European Cases</span></li>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_info_section();"><i class="fa fa-clipboard navbar-icon navbar-icon"></i><span
                         class="nav-label">Info</span></li>
-                </li>
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -61,7 +64,6 @@
                     </ul>
                 </div>
             </nav>
-
             <!--Charts-->
 
             <!-- Trend Chart-->
@@ -113,6 +115,16 @@
             </div>
             <!-- ./Analysis for Region Chart-->
 
+
+            <!--Europe Cases-->
+            <div id="europe_cases" style="display:none;">
+                <div class="container p-3">
+                    <h2>Number of Positive for Covid-19 in Europe</h2>
+                </div>
+                <canvas id="chart" class=""></canvas>
+            </div>
+            <!--./Europe Cases-->
+
             <!--./Charts-->
 
             <!-- Info Section-->
@@ -125,16 +137,23 @@
                                 data
                                 found
                                 on the dataset Repository by Umberto Rosini, link of same:
+
                                 <a href="https://github.com/pcm-dpc/COVID-19/tree/master/dati-json"
                                     target="_blank">https://github.com/pcm-dpc/COVID-19/tree/master/dati-json</a>.
                             </p>
-                            <p>The repository can be found on GitHub at the following link - <a
+                            <p>The European data are taken from the repository of Jesus M. Castagnetto at the following
+                                repository link:
+                                <a href="https://github.com/jmcastagnetto/covid-19-data-cleanup"
+                                    target="_blank">https://github.com/jmcastagnetto/covid-19-data-cleanup</a>.
+                            </p>
+                            <p>The repository of my project can be found on GitHub at the following link: <a
                                     href="https://github.com/gello94/covid-19-Italy-status-and-update"
                                     target="_blank">https://github.com/gello94/covid-19-Italy-status-and-update</a>.
                             </p>
                         </div>
                     </div>
                 </div>
+
             </div>
             <!-- ./ Info Section-->
 
@@ -183,7 +202,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
 
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
 
 
     <!-- Bootstrap Script-->

@@ -6,7 +6,6 @@ Watch the dashboard at the following link - https://gello94.github.io/covid-19-I
 
 The data are updated every day between 17:00 and 18:00 hour.
 
-There are two section under construction:
 
 ## National Trends
 The National trends shows the trend line of the following data:
@@ -35,6 +34,13 @@ The Regional trends shows the trend line for each region that can be choose of t
 - Death
 - Total Cases
 - Tests
+
+## Positive Cases in Europe
+The European Cases section shows a line bar with all the Countries with the relative number of total positive cases of Covid-19.
+
+The data for the European cases are taken from the repository of Jesus M. Castagnetto - link of the GitHub Repository as follow: 
+https://github.com/jmcastagnetto/covid-19-data-cleanup
+
 
 ## References
 
