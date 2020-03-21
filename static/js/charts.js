@@ -376,14 +376,14 @@ function getRegionData() {
 }
 
 
+europe_list = ['Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'The Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom']
+
+
 // Worldwide Trend Chart
 d3.csv('https://raw.githubusercontent.com/jmcastagnetto/covid-19-data-cleanup/master/data/covid-19_ts_confirmed.csv')
     .then(makeChart);
 
 function makeChart(countries) {
-
-    europe_list = ['Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'The Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom']
-
 
     cases_confirmed = 0
     confirmed_total = []
@@ -394,12 +394,28 @@ function makeChart(countries) {
         const country_data = countries.map(function (d) {
 
             if (d.country_region == europe_list[i]) {
-
                 cases_confirmed = (d.confirmed)
             }
         });
+
         confirmed_total.push(cases_confirmed)
     }
+
+
+    // Solve bug of UK data not showing
+    confirmed_total.pop()
+    for (var i = 0; i < europe_list.length; i++) {
+
+        const country_data = countries.map(function (d) {
+
+            if (d.province_state == 'United Kingdom') {
+                cases_confirmed = (d.confirmed)
+            }
+        });
+
+        confirmed_total.push(cases_confirmed)
+    }
+
 
     var chartColors = {
         red: 'rgb(255, 99, 132)',
@@ -447,9 +463,10 @@ function makeChart(countries) {
 
 }
 
+
+
 getTrendData();
 getRegionData();
-
 
 // Auto refresh the json to check if there are new data
 var previous = null;
