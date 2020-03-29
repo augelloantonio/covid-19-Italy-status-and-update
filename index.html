@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="static/css/main.css">
 
-    <title>Covid-19 - Italian Data Visualizationt</title>
+    <title>Covid-19 - Italian Data Visualization</title>
 </head>
 
 <body>
@@ -36,13 +36,13 @@
                             class="fas fa-angle-right navbar-icon"></i></span></a>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_trend_chart();"><i class="fas fa-chart-line hovered-li"></i><span
-                        class="nav-label ml-2">National Trends</span></li>
+                        class="nav-label ml-2">Trend Nazionali</span></li>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_region_chart();"><i class="fas fa-chart-line far hovered-li"></i><span
-                        class="nav-label ml-2">Counties Trends</span></li>
+                        class="nav-label ml-2">Trend Regionali</span></li>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_europe_cases();"><i class="fas fa-chart-line far hovered-li"></i><span
-                        class="nav-label ml-2">European Cases</span></li>
+                        class="nav-label ml-2">Casi in Europa</span></li>
                 <li class="list-group-item list-group-item-action bg-dark" style="cursor: pointer;"
                     onclick="show_info_section();"><i class="fa fa-clipboard navbar-icon navbar-icon"></i><span
                         class="nav-label">Info</span></li>
@@ -66,21 +66,37 @@
             </nav>
             <!--Charts-->
 
+            <!--Header-->
+            <div class="container">
+                <h2>Visualizzazione dei Dati pervenuti dalla Protezione Civile</h2>
+                <p>I dati vengono aggiornati giornalmente tra le ore 17:00 e le ore 18:00</p>
+                <p>I primi dati ricevuti risalgono al 24/02/2020</p>
+            </div>
+            <!--./Header-->
+
+
             <!-- Trend Chart-->
             <div class="container-fluid" id="trends">
                 <div class="container p-3">
-                    <h2>National Trend</h2>
+                    <h3>Analisi Dati Andamento Nazionale</h3>
                 </div>
-                <canvas id="trends_chart" class="w-100"></canvas>
-                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                <div class="chart-container">
+                    <canvas id="trends_chart" class="w-100"></canvas>
+                </div>
+                <div class="container p-3">
+                    <h3>Analisi Dati Ospedalieri</h3>
+                    <div class="chart-container">
+                        <canvas id="trends_health_chart" class="w-100"></canvas>
+                    </div>
+                </div>
             </div>
             <!-- ./Trend Chart-->
 
             <!-- Analysis for Region Chart-->
             <div class="container-fluid" id="regions_trend" style="display:none;">
                 <div>
-                    <h2>Trends of Italian Counties </h2>
-                    <h4>Please Select a County</h4>
+                    <h3>Andamento dati Regionali</h3>
+                    <h5>Seleziona la Regione desiderata e clicca su "mostra"</h5>
                     <form>
                         <select id="region_selection">
                             <option value="Abruzzo" selected="selected">Abruzzo</option>
@@ -104,13 +120,16 @@
                             <option value="Valle d'Aosta">Valle d'Aosta</option>
                             <option value="Veneto">Veneto</option>
                         </select>
-                        <input type="button" onclick="select_region(); getRegionData();" value="Show Data">
+                        <input type="button" onclick="select_region(); getRegionData();" value="Mostra">
 
                     </form>
                 </div>
 
                 <div id="selected_region">
                     <canvas id="regions_chart" class="w-100"></canvas>
+
+                    <h3>Analisi Dati Ospedalieri</h3>
+                    <canvas id="region_health_chart" class="w-100"></canvas>
                 </div>
             </div>
             <!-- ./Analysis for Region Chart-->
@@ -119,7 +138,7 @@
             <!--Europe Cases-->
             <div id="europe_cases" style="display:none;">
                 <div class="container p-3">
-                    <h2>Number of Positive for Covid-19 in Europe</h2>
+                    <h3>Numero totale di casi in Europa</h3>
                 </div>
                 <canvas id="chart" class=""></canvas>
             </div>
@@ -129,22 +148,21 @@
             <div id="info_section" style="display: none;">
                 <div class="container">
                     <div class="section p-3">
-                        <h2>Covid-19 - Italian Data Visualization</h2>
+                        <h3>Covid-19 - Italian Data Visualization</h3>
                         <div class="article">
-                            <p>This simple frontend Data Visualization dashboard shows the trend of the
-                                data
-                                found
-                                on the dataset Repository by Umberto Rosini, link of same:
+                            <p>Questa semplice dashboard di visualizzazione dei dati relativi all'andamento del Covid-19
+                                in Italia
+                                si basa sui dati pervenuti dalla Protezione Civile dalla repository di Umberto Rosini,
+                                link:
 
                                 <a href="https://github.com/pcm-dpc/COVID-19/tree/master/dati-json"
                                     target="_blank">https://github.com/pcm-dpc/COVID-19/tree/master/dati-json</a>.
                             </p>
-                            <p>The European data are taken from the repository of Jesus M. Castagnetto at the following
-                                repository link:
+                            <p>I dati Europei sono presi dalla repository di Jesus M. Castagnetto al seguente link:
                                 <a href="https://github.com/jmcastagnetto/covid-19-data-cleanup"
                                     target="_blank">https://github.com/jmcastagnetto/covid-19-data-cleanup</a>.
                             </p>
-                            <p>The repository of my project can be found on GitHub at the following link: <a
+                            <p>La repository di questo progetto puo' essere trovata su GitHub al seguente link: <a
                                     href="https://github.com/gello94/covid-19-Italy-status-and-update"
                                     target="_blank">https://github.com/gello94/covid-19-Italy-status-and-update</a>.
                             </p>
@@ -165,24 +183,24 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger">#stayhome, Save Yourself and Others </h5>
+                    <h5 class="modal-title text-danger">#staiacasa, Salva te stesso e gli altri </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h2>Some very important info regarding Codiv-19</h2>
+                    <h3>Alcune importanti informazioni</h3>
                     <h6>(<a
                             href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">WHO</a>
                         Advices)</h6>
                     <br>
-                    <h4>1. Wash your hands frequently</h4>
+                    <h4>1. Lava le mani frequentemente</h4>
 
-                    <h4>2. Maintain social distancing</h4>
+                    <h4>2. Mantieni la distanza sociale</h4>
 
-                    <h4>3. Avoid touching eyes, nose and mouth</h4>
+                    <h4>3. Non toccare occhi, viso, bocca</h4>
 
-                    <h4>4. If you have fever, cough and difficulty breathing, seek medical care early</h4>
+                    <h4>4. Se hai sintomi influenzali contatta il tuo medico personale</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
