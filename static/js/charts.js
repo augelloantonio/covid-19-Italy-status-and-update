@@ -6,17 +6,35 @@ function getTrendData() {
             var labels = result.map(function (e) {
                     return e.data;
                 }),
+                source1 = result.map(function (e) {
+                    return e.ricoverati_con_sintomi;
+                }),
+                source2 = result.map(function (e) {
+                    return e.terapia_intensiva;
+                }),
+                source3 = result.map(function (e) {
+                    return e.totale_ospedalizzati;
+                }),
                 source4 = result.map(function (e) {
                     return e.totale_attualmente_positivi;
                 }),
                 source6 = result.map(function (e) {
                     return e.nuovi_attualmente_positivi;
                 }),
+                source7 = result.map(function (e) {
+                    return e.dimessi_guariti;
+                }),
+                source8 = result.map(function (e) {
+                    return e.deceduti;
+                }),
                 source8 = result.map(function (e) {
                     return e.deceduti;
                 }),
                 source9 = result.map(function (e) {
                     return e.totale_casi;
+                }),
+                source10 = result.map(function (e) {
+                    return e.tamponi;
                 });
             var ctx = document.getElementById("trends_chart").getContext("2d");
             Chart.defaults.global.responsive = true;
@@ -77,41 +95,12 @@ function getTrendData() {
                     }
                 }
             });
-        });
-}
 
-
-// Health Trends Chart
-function getHealthTrendsData() {
-    $.getJSON(
-        'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json',
-        function (result) {
-            var labels = result.map(function (e) {
-                    return e.data;
-                }),
-                source1 = result.map(function (e) {
-                    return e.ricoverati_con_sintomi;
-                }),
-                source2 = result.map(function (e) {
-                    return e.terapia_intensiva;
-                }),
-                source3 = result.map(function (e) {
-                    return e.totale_ospedalizzati;
-                }),
-                source7 = result.map(function (e) {
-                    return e.dimessi_guariti;
-                }),
-                source8 = result.map(function (e) {
-                    return e.deceduti;
-                }),
-                source10 = result.map(function (e) {
-                    return e.tamponi;
-                });
 
             var ctx = document.getElementById("trends_health_chart").getContext("2d");
             Chart.defaults.global.responsive = true;
 
-            var trends_chart = new Chart(ctx, {
+            var trends_health_chart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
@@ -136,16 +125,6 @@ function getHealthTrendsData() {
                         pointHoverBackgroundColor: "rgba(246, 71, 64, 1)",
                         pointHoverBorderColor: "#fff"
                     }, {
-                        label: "Total Hospitalized",
-                        data: source3,
-                        borderWidth: 2,
-                        backgroundColor: "rgba(26, 143, 227, 0.1)",
-                        borderColor: "rgba(26, 143, 227, 1)",
-                        pointBackgroundColor: "rgba(26, 143, 227, 1)",
-                        pointBorderColor: "rgba(26, 143, 227, 1)",
-                        pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
-                        pointHoverBorderColor: "#fff"
-                    }, {
                         label: "Recovered",
                         data: source7,
                         borderWidth: 2,
@@ -154,16 +133,6 @@ function getHealthTrendsData() {
                         pointBackgroundColor: "rgba(74, 240, 252, 1)",
                         pointBorderColor: "rgba(74, 240, 252, 1)",
                         pointHoverBackgroundColor: "rgba(74, 240, 252, 1)",
-                        pointHoverBorderColor: "#fff"
-                    }, {
-                        label: "Death",
-                        data: source8,
-                        borderWidth: 2,
-                        backgroundColor: "rgba(59, 57, 58, 0.1)",
-                        borderColor: "rgba(13, 2, 11, 0.8)",
-                        pointBackgroundColor: "rgba(13, 2, 11, 0.8)",
-                        pointBorderColor: "rgba(13, 2, 11, 0.8)",
-                        pointHoverBackgroundColor: "rgba(13, 2, 11, 0.8)",
                         pointHoverBorderColor: "#fff"
                     }, {
                         label: "Tests",
@@ -299,14 +268,14 @@ function getRegionData() {
                         pointHoverBorderColor: "#fff",
                         spanGaps: true,
                     }, {
-                        label: "Recovered",
-                        data: source7,
+                        label: "Total Cases",
+                        data: source9,
                         borderWidth: 2,
-                        backgroundColor: "rgba(74, 240, 252, 0.1)",
-                        borderColor: "rgba(5, 142, 152, 1)",
-                        pointBackgroundColor: "rgba(74, 240, 252, 1)",
-                        pointBorderColor: "rgba(74, 240, 252, 1)",
-                        pointHoverBackgroundColor: "rgba(74, 240, 252, 1)",
+                        backgroundColor: "rgba(221, 73, 28, 0.1)",
+                        borderColor: "rgba(198, 54, 10, 0.8)",
+                        pointBackgroundColor: "rgba(198, 54, 10, 0.8)",
+                        pointBorderColor: "rgba(198, 54, 10, 0.8)",
+                        pointHoverBackgroundColor: "rgba(198, 54, 10, 0.8)",
                         pointHoverBorderColor: "#fff",
                         spanGaps: true,
                     }, {
@@ -318,17 +287,6 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(13, 2, 11, 0.8)",
                         pointBorderColor: "rgba(13, 2, 11, 0.8)",
                         pointHoverBackgroundColor: "rgba(13, 2, 11, 0.8)",
-                        pointHoverBorderColor: "#fff",
-                        spanGaps: true,
-                    }, {
-                        label: "Total Cases",
-                        data: source9,
-                        borderWidth: 2,
-                        backgroundColor: "rgba(221, 73, 28, 0.1)",
-                        borderColor: "rgba(198, 54, 10, 0.8)",
-                        pointBackgroundColor: "rgba(198, 54, 10, 0.8)",
-                        pointBorderColor: "rgba(198, 54, 10, 0.8)",
-                        pointHoverBackgroundColor: "rgba(198, 54, 10, 0.8)",
                         pointHoverBorderColor: "#fff",
                         spanGaps: true,
                     }]
@@ -379,17 +337,6 @@ function getRegionData() {
                         pointHoverBorderColor: "#fff",
                         spanGaps: true,
                     }, {
-                        label: "Total Hospitalized",
-                        data: source3,
-                        borderWidth: 2,
-                        backgroundColor: "rgba(26, 143, 227, 0.1)",
-                        borderColor: "rgba(26, 143, 227, 1)",
-                        pointBackgroundColor: "rgba(26, 143, 227, 1)",
-                        pointBorderColor: "rgba(26, 143, 227, 1)",
-                        pointHoverBackgroundColor: "rgba(26, 143, 227, 1)",
-                        pointHoverBorderColor: "#fff",
-                        spanGaps: true,
-                    }, {
                         label: "Recovered",
                         data: source7,
                         borderWidth: 2,
@@ -398,17 +345,6 @@ function getRegionData() {
                         pointBackgroundColor: "rgba(74, 240, 252, 1)",
                         pointBorderColor: "rgba(74, 240, 252, 1)",
                         pointHoverBackgroundColor: "rgba(74, 240, 252, 1)",
-                        pointHoverBorderColor: "#fff",
-                        spanGaps: true,
-                    }, {
-                        label: "Death",
-                        data: source8,
-                        borderWidth: 2,
-                        backgroundColor: "rgba(59, 57, 58, 0.1)",
-                        borderColor: "rgba(13, 2, 11, 0.8)",
-                        pointBackgroundColor: "rgba(13, 2, 11, 0.8)",
-                        pointBorderColor: "rgba(13, 2, 11, 0.8)",
-                        pointHoverBackgroundColor: "rgba(13, 2, 11, 0.8)",
                         pointHoverBorderColor: "#fff",
                         spanGaps: true,
                     }, {
@@ -530,8 +466,6 @@ function makeChart(countries) {
 
 }
 
-
-getHealthTrendsData()
 getTrendData();
 getRegionData();
 
