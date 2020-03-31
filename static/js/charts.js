@@ -16,10 +16,10 @@ function getTrendData() {
                     return e.totale_ospedalizzati;
                 }),
                 source4 = result.map(function (e) {
-                    return e.totale_attualmente_positivi;
+                    return e.totale_positivi;
                 }),
                 source6 = result.map(function (e) {
-                    return e.nuovi_attualmente_positivi;
+                    return e.variazione_totale_positivi;
                 }),
                 source7 = result.map(function (e) {
                     return e.dimessi_guariti;
@@ -183,6 +183,7 @@ function getRegionData() {
                     console.log(grouped[region].) */
 
             var labels = result.map(function (e) {
+
                     if (e.denominazione_regione == region) {
                         date = e.data
                     }
@@ -205,7 +206,7 @@ function getRegionData() {
                 }),
                 source4 = result.map(function (e) {
                     if (e.denominazione_regione == region) {
-                        return e.totale_attualmente_positivi;
+                        return e.totale_positivi;
                     }
                 }),
                 source5 = result.map(function (e) {
@@ -215,7 +216,7 @@ function getRegionData() {
                 }),
                 source6 = result.map(function (e) {
                     if (e.denominazione_regione == region) {
-                        return e.nuovi_attualmente_positivi;
+                        return e.nuovi_positivi;
                     }
                 }),
                 source7 = result.map(function (e) {
