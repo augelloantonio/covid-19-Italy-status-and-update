@@ -19,13 +19,10 @@ function getTrendData() {
                     return e.totale_positivi;
                 }),
                 source6 = result.map(function (e) {
-                    return e.variazione_totale_positivi;
+                    return e.nuovi_positivi;
                 }),
                 source7 = result.map(function (e) {
                     return e.dimessi_guariti;
-                }),
-                source8 = result.map(function (e) {
-                    return e.deceduti;
                 }),
                 source8 = result.map(function (e) {
                     return e.deceduti;
