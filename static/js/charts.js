@@ -1,3 +1,15 @@
+/*
+* 
+*
+JavaScript Sheet for ChartJs implementation
+*
+*
+*/
+
+// Declaring variables
+europe_list = ['Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'The Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom']
+
+
 // Trends Chart
 function getTrendData() {
     $.getJSON(
@@ -19,7 +31,7 @@ function getTrendData() {
                     return e.totale_positivi;
                 }),
                 source6 = result.map(function (e) {
-                    return e.nuovi_positivi;
+                    return e.variazione_totale_positivi;
                 }),
                 source7 = result.map(function (e) {
                     return e.dimessi_guariti;
@@ -375,9 +387,6 @@ function getRegionData() {
         });
 
 }
-
-
-europe_list = ['Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'The Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom']
 
 
 // Worldwide Trend Chart
